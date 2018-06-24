@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import repo.sundq.light.json.HttpJsonResult;
-import repo.sundq.light.persistent.jpa.Device;
-import repo.sundq.light.persistent.jpa.DeviceRepository;
+import repo.sundq.light.persistent.jpa.Company;
+import repo.sundq.light.persistent.jpa.CompanyRepository;
 import repo.sundq.light.pojo.HttpMsg;
 
 /**
@@ -24,25 +24,25 @@ import repo.sundq.light.pojo.HttpMsg;
 @RestController
 @RequestMapping("/msg")
 public class HttpSendController {
-	private Logger logger = LoggerFactory.getLogger(HttpSendController.class);
-	
-	@Autowired
-	private DeviceRepository deviceRepo;
-	
-	@RequestMapping(value="/send_test", produces="application/json;charset=utf-8")
-	public HttpJsonResult send(String msg) {
-		logger.info("get http send:" + msg);
-		return HttpJsonResult.build(200, "ok", null);
-	}
-	
-	@RequestMapping(value="/add_device", method=RequestMethod.POST, produces="application/json;charset=utf-8")
-	public HttpJsonResult add_device(Device device) {
-		deviceRepo.saveAndFlush(device);
-		return HttpJsonResult.build(200, "ok", device);
-	}
-	
-	@RequestMapping(value="/send", method=RequestMethod.POST, produces="application/json;charset=utf-8")
-	public HttpJsonResult send(@RequestBody HttpMsg httpMsg, HttpServletRequest request) {
-		return HttpJsonResult.build(200, "OK", httpMsg);
-	}
+//	private Logger logger = LoggerFactory.getLogger(HttpSendController.class);
+//	
+//	@Autowired
+//	private CompanyRepository deviceRepo;
+//	
+//	@RequestMapping(value="/send_test", produces="application/json;charset=utf-8")
+//	public HttpJsonResult send(String msg) {
+//		logger.info("get http send:" + msg);
+//		return HttpJsonResult.build(200, "ok", null);
+//	}
+//	
+//	@RequestMapping(value="/add_device", method=RequestMethod.POST, produces="application/json;charset=utf-8")
+//	public HttpJsonResult add_device(Company device) {
+//		deviceRepo.saveAndFlush(device);
+//		return HttpJsonResult.build(200, "ok", device);
+//	}
+//	
+//	@RequestMapping(value="/send", method=RequestMethod.POST, produces="application/json;charset=utf-8")
+//	public HttpJsonResult send(@RequestBody HttpMsg httpMsg, HttpServletRequest request) {
+//		return HttpJsonResult.build(200, "OK", httpMsg);
+//	}
 }
